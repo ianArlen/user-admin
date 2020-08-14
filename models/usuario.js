@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
+
+
 const userschema = new schema({
     userId:{
         type: schema.Types.ObjectId,
@@ -23,7 +25,8 @@ const userschema = new schema({
     },
     updated:{
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     active:{
         type: Boolean, 
@@ -31,4 +34,5 @@ const userschema = new schema({
     }
 })
 
-module.exports = mongoose.model('usuario',userschema   )
+const user = mongoose.model('usuario',userschema);
+module.exports = user;
