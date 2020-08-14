@@ -9,7 +9,7 @@ const userschema = new schema({
         type: String,
         required: true
     },
-    nickname:{
+    email:{
         type: String,
         required: true
     },
@@ -30,3 +30,5 @@ const userschema = new schema({
         default: true
     }
 })
+
+module.exports = mongoose.model('usuario',userschema   )
