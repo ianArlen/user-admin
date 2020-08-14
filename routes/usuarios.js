@@ -29,30 +29,33 @@ router.post('/user/signup', async (req, res) => {
         name,
         email,
         password,
-        create,
-        update,
-        active
     } = data 
-    /**if(name === '' || name === null){
+    if(name === '' || name === null || name === undefined){
         return res.status(400).json({
             error: 'Campo nombre vacio'
         })
     }
-    if(nickname === '' || nickname === null){
-        return res.status(400).json({
-            error: 'Campo alias vacio'
-        })
-    }
-    if(email === '' || email === null){
+    if(email === '' || email === null || email === undefined){
         return res.status(400).json({
             error: 'Campo correo vacio'
         })
     }
-    if(password === '' || password === null){
+    if(password === '' || password === null || password === undefined){
         return res.status(400).json({
             error: 'Campo clave vacio'
         })
-    }*/
+    }
+    try {
+        const newUser = new user({
+            name: name,
+            email: email,
+            password: password,
+        })
+        const userResponse = await newUser.save();
+        console.log({id : userResponse.id});
+    }catch(error) {
+        console.log(error);
+    }
     //const newuser = new user((name,email,password,create,update,active))
     //await newuser.save()
     console.log(name,email)
