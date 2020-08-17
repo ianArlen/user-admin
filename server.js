@@ -7,7 +7,7 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const app = express();
 const port = process.env.port
-const db_host = process.env.DB_HOST
+const db_host = process.env.db_host
 conexiondb(db_host)
 const usuarios = require('./routes/usuarios.js')
 /*
